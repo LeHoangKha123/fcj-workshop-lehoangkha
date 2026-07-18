@@ -27,7 +27,7 @@ The platform removes hours of manual question-entry work per exam set through th
 ### 3. Solution Architecture
 LingoRise uses a fully serverless AWS architecture in **ap-southeast-1**. User traffic hits two surfaces: the Next.js frontend on Amplify Hosting, and the REST API on API Gateway. AWS Lambda is the only compute tier — every backend handler is a stateless Node.js 20 function. Lambda verifies Cognito-issued JWTs locally, reads and writes relational data in RDS PostgreSQL, stores assets (question images, speaking submissions, draft DOCX assets) in S3, and pulls encrypted secrets from SSM Parameter Store. An optional CloudFront distribution serves private S3 assets via signed URLs, and AWS WAF protects the API surface. A separately scheduled OCR worker drains the OCR job queue against RDS and S3.
 
-![LingoRise System Architecture](./images/1.jpg)
+![LingoRise System Architecture](/images/Proposal/1.jpg)
 
 ### AWS Services Used
 - **Amazon API Gateway (REST)**: Public HTTPS endpoint fronting every Lambda handler.
