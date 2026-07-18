@@ -79,7 +79,4 @@ Attending the "Career & Culture Sharing at MNCs Seminar" provided a professional
 - Accumulating certificates through programs like AWS Student Builder is a solid stepping stone, but the ability to clearly present project architecture (Portfolio) and technical storytelling (Data Storytelling) is the true key to creating a core competitive advantage.
 - Automating the deployment pipeline (CI/CD) is no longer an optional add-on, but a mandatory requirement to maintain fast and safe release speeds in modern environments.
 
-#### Event Photos
-![Event Photo](images/1.jpg)
-
 > Overall, the seminar not only provided a genuine perspective on the career development path and the DevOps ecosystem but also reshaped my professional mindset: shifting strongly from a passive executor (Follower) to the mentality of a proactive engineer (Problem Solver), ready to design high-load architectures that meet the strict standards of enterprises.

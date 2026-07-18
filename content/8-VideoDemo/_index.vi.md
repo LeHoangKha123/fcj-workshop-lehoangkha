@@ -1,5 +1,5 @@
 ---
-title: "8. Video Demo"
+title: "Video Demo"
 date: 2024-01-01
 weight: 8
 chapter: false
