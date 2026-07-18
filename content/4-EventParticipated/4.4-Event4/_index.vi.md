@@ -68,8 +68,8 @@ Chức vô địch không chỉ là một chiếc cúp hay phần thưởng, mà
 
 #### Một số hình ảnh đáng nhớ tại trận Chung kết
 
-![Chiến thắng và nâng cúp vô địch cùng đồng đội](images/IMG_0123.jpg)
+![Chiến thắng và nâng cúp vô địch cùng đồng đội](/vi/4-eventparticipated/4.4-event4/images/IMG_0123.jpg)
 
-![Đội thi tập trung thảo luận chiến thuật trong trận đấu](images/IMG_0032.jpg)
+![Đội thi tập trung thảo luận chiến thuật trong trận đấu](/vi/4-eventparticipated/4.4-event4/images/IMG_0032.jpg)
 
 > Chức vô địch Cloud Architect Game Show là một cột mốc rực rỡ, khép lại chuỗi sự kiện thực tập với sự tự tin tuyệt đối vào năng lực thiết kế hệ thống và giải quyết vấn đề thực tế trên nền tảng AWS.

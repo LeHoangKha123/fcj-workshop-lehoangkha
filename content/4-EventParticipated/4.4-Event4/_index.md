@@ -68,8 +68,8 @@ The championship is not just about a trophy or a prize; it is the ultimate valid
 
 #### Memorable Photos from the Grand Finale
 
-![Victory and lifting the championship trophy with the team](images/IMG_0123.jpg)
+![Victory and lifting the championship trophy with the team](/4-eventparticipated/4.4-event4/images/IMG_0123.jpg)
 
-![The team focused on discussing tactics during the match](images/IMG_0032.jpg)
+![The team focused on discussing tactics during the match](/4-eventparticipated/4.4-event4/images/IMG_0032.jpg)
 
 > The Cloud Architect Game Show championship is a brilliant milestone, wrapping up the internship events with absolute confidence in my system design and real-world problem-solving capabilities on AWS.
