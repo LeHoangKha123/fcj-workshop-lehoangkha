@@ -1,126 +1,55 @@
 ---
 title: "Blog 2"
 date: 2024-01-01
-weight: 1
+weight: 2
 chapter: false
-pre: " <b> 3.2. </b> "
+pre: " <b> 2. </b> "
 ---
 {{% notice warning %}}
 ⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
 {{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+# SERVERLESS AI ON AWS — HOW LINGORISE GENERATES AND GRADES EXAMS
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+The hard part of an AI-powered test-prep platform is not the website — it is producing IELTS/TOEIC content and grading it at scale without owning a GPU fleet. LingoRise solves this entirely with serverless AWS building blocks: AWS Lambda orchestrates the AI work, Amazon Polly synthesizes listening audio, and Amazon S3 stores and delivers everything. This post walks through that AI and content pipeline and the reasoning behind how it is sized and secured.
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+## The problem: AI at scale without a server to babysit
 
----
+Generating a reading passage with questions, or grading a free-text Writing answer, means calling a large language model and doing non-trivial post-processing. Those calls are bursty and occasionally slow. Running them on an always-on server would mean paying for idle GPUs and capacity-planning for exam-night spikes. The serverless approach flips this: compute exists only for the duration of the request, and scales out automatically when a whole class hits "start" at once.
 
-## Architecture Guidance
+## The AI pipeline on Lambda
 
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
+All AI orchestration lives inside the single Express-on-Lambda API function. When exam content is needed, the handler calls an OpenRouter-compatible chat endpoint, then validates and normalizes the model output before it ever reaches a student.
 
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
+Two design choices make this work within serverless limits:
 
-**The solution architecture is now as follows:**
+* **Pre-generate and cache.** Content is generated ahead of time and cached rather than produced live on the critical path. A student starting an exam reads pre-built, validated questions — the slow, expensive AI call already happened, so the request is fast and cheap. Caching also directly cuts the AI bill, since identical content is never paid for twice.
+* **Right-sized compute.** The API function runs at **1024 MB with a 120-second timeout**, deliberately larger than the lightweight 256 MB default, precisely because AI generation and bulk file import are the heaviest things it does. More memory on Lambda also means more CPU, which shortens each generation.
 
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+For the grading path, the model output is parsed and scored against a validated answer key, with null-safe handling so a malformed AI response degrades gracefully instead of crashing a student's result.
 
----
+## Listening audio without servers: Amazon Polly
 
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
+The Listening section needs spoken audio. In local development we used `edge-tts`, but that spawns a Python process and **cannot run on Lambda**. Amazon Polly solved this cleanly: it is a pure SDK call, no subprocess, no binary to bundle.
 
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+* Polly runs in **neural** engine mode with the `Joanna` voice, producing natural speech for the "Nghe thử" (listen preview) and "Xác nhận nhập" (confirm import) buttons.
+* Because it is just an API call, the same code path works identically in production without the local CLI dependency.
+* The Lambda's IAM role grants exactly one Polly action — `polly:SynthesizeSpeech` — and nothing more.
 
----
+## Assets and delivery: Amazon S3
 
-## Technology Choices and Communication Scope
+Everything the pipeline produces — generated audio, question images, import drafts — lands in a private S3 bucket:
 
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+* The bucket **blocks all public access** and uses `BucketOwnerEnforced` ownership, so nothing is ever accidentally world-readable.
+* Content is served through **signed URLs with a 15-minute TTL**, letting the browser download assets directly from S3 without the Lambda proxying the bytes, while keeping the objects private.
+* A **lifecycle rule** auto-expires `import-drafts/` after 7 days and aborts incomplete multipart uploads after 1 day, so transient working files clean themselves up.
 
----
+## Cost and resilience
 
-## The Pub/Sub Hub
+The pipeline is engineered so that the expensive parts happen rarely and the cheap parts happen often:
 
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
+* **Caching** ensures the AI model is paid for once per unique piece of content, not once per student.
+* **Rate limiting** — a per-Lambda in-memory limiter by default, upgradeable to a shared window backed by serverless Redis (e.g. Upstash over TLS) with no code change — keeps abusive traffic from turning into a runaway AI bill.
+* **Graceful fallback** — null-safe grading and validated generation mean a bad model response never takes down a student session.
 
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
-
----
-
-## Core Microservice
-
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
-
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
-
----
-
-## Front Door Microservice
-
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
-
----
-
-## Staging ER7 Microservice
-
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
-
----
-
-## New Features in the Solution
-
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+The result is an AI platform where the heavy lifting — content generation, grading, audio synthesis — runs on demand, costs money only when used, and scales itself. No GPU fleet, no audio server, no capacity plan. Just Lambda, Polly, and S3 doing one job each.

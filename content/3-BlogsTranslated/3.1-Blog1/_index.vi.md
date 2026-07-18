@@ -3,124 +3,64 @@ title: "Blog 1"
 date: 2024-01-01
 weight: 1
 chapter: false
-pre: " <b> 3.1. </b> "
----
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
-
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
-
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
-
+pre: " <b> 1. </b> "
 ---
 
-## Hướng dẫn kiến trúc
+# XÂY DỰNG LINGORISE TRÊN AWS — KIẾN TRÚC SERVERLESS CHO NỀN TẢNG LUYỆN THI IELTS/TOEIC
 
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
+LingoRise là nền tảng luyện thi IELTS và TOEIC ứng dụng AI: tự sinh đề luyện tập, chấm Writing và Speaking, tổng hợp audio phần Listening và xử lý thanh toán — tất cả mà không cần một máy chủ nào để chúng tôi phải vá lỗi, scale hay thức dậy lúc 2 giờ sáng để xử lý. Toàn bộ backend chạy trên AWS như một stack serverless duy nhất, khai báo trong một file AWS SAM template. Bài viết này đi qua kiến trúc đó và, với từng dịch vụ AWS, chỉ ra lợi ích cụ thể mà nó mang lại cho một đội nhỏ đang xây dựng sản phẩm thật.
 
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
+## Vì sao chọn serverless, và vì sao chọn AWS
 
-**Kiến trúc giải pháp bây giờ như sau:**
+Trước khi viết một dòng hạ tầng nào, chúng tôi đưa ra một quyết định định hình mọi thứ về sau: **không quản lý máy chủ**. Một nền tảng luyện thi có lưu lượng truy cập thất thường và đột biến — ban đêm yên ắng, rồi tăng vọt khi cả một lớp cùng làm bài thi thử vào một buổi tối. Provisioning EC2 cho mức đỉnh nghĩa là trả tiền cho công suất nhàn rỗi 90% thời gian; provisioning cho mức trung bình nghĩa là sập vào ngày thi.
 
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
+Các khối serverless của AWS giải quyết trực tiếp bài toán này:
 
----
+* **Kinh tế scale-to-zero** — trả tiền theo từng request, không theo giờ. Một đêm nhàn rỗi gần như không tốn gì.
+* **Co giãn mặc định** — Lambda tự động fan-out ra hàng trăm execution đồng thời khi có đột biến, không cần pre-warm hay lập kế hoạch công suất.
+* **Mọi thứ đều managed** — Cognito lo authentication, S3 lo lưu trữ, Polly lo giọng nói. Chúng tôi viết logic nghiệp vụ, không viết hạ tầng không tạo khác biệt.
+* **Một template, một lệnh deploy** — toàn bộ stack (API, auth, storage, WAF, IAM) khai báo trong `template.yaml` và triển khai chỉ với một lệnh `sam deploy`.
 
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
+## Luồng request, từ đầu đến cuối
 
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+Một request từ trình duyệt của học viên đi qua một chuỗi dịch vụ AWS, mỗi dịch vụ làm tốt một việc:
 
----
+```
+Trình duyệt
+  → Route 53 (DNS)  → ACM + Amplify (frontend Next.js, TLS)
+  → AWS WAF (lá chắn tầng 7)
+  → API Gateway (REST, stage "Prod", có throttling)
+  → AWS Lambda (một app Express duy nhất qua serverless-http)
+  → PostgreSQL  •  Cognito  •  S3  •  Polly
+  → CloudWatch (log JSON có cấu trúc)
+```
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
+Điểm thiết kế đáng nói: thay vì mỗi route một Lambda, LingoRise chạy **một Lambda duy nhất** host một app Express và để framework tự định tuyến bên trong. API Gateway chỉ đơn giản forward mọi path (`/` và `/{proxy+}`) đến nó. Cách này giúp cold start hiếm khi xảy ra, deploy cực đơn giản, và môi trường dev giống hệt production — cùng một Express server chạy trên `localhost:4000` và bên trong Lambda.
 
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+## Các dịch vụ AWS chính và lợi ích của từng cái
 
----
+* **API Gateway** — cửa ngõ. Ngoài định tuyến, nó áp throttling ở mức stage (ổn định 50 req/s, burst 100). Lưu lượng vượt ngưỡng bị loại bỏ với mã `429` *trước khi* chạm tới Lambda, nên một đợt burst không thể fan-out thành hàng trăm invocation đồng thời và làm cạn connection pool của database.
+* **AWS Lambda** — compute trả theo lần gọi, không tốn công vận hành server. Hàm API được cấu hình 1024 MB / 120 s để xử lý thoải mái việc sinh nội dung bằng AI và import file, trong khi mặc định gọn nhẹ 256 MB cho các tác vụ nhẹ hơn.
+* **Amazon Cognito** — authentication được quản lý hoàn toàn. Một User Pool lo đăng ký, gửi mã xác thực qua email, chính sách mật khẩu, và phát hành JWT để Lambda xác minh trên mỗi route được bảo vệ. Chúng tôi không bao giờ tự lưu hay hash mật khẩu.
+* **Amazon S3** — lưu trữ asset bền vững cho ảnh câu hỏi và audio được sinh ra. Bucket chặn toàn bộ truy cập public và phục vụ nội dung qua **signed URL** (hết hạn sau 15 phút), nên asset vẫn riêng tư mà trình duyệt vẫn tải trực tiếp được. Lifecycle rule tự xóa các bản nháp import sau 7 ngày.
+* **Amazon CloudWatch** — log JSON có cấu trúc từ mỗi lần invoke, cho khả năng quan sát có thể tìm kiếm mà không cần tự dựng hệ thống logging.
 
-## The pub/sub hub
+## Bảo mật nhiều lớp
 
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
+Bảo mật ở đây không phải một tính năng đơn lẻ; nó được xếp lớp để lỗi ở một lớp sẽ được lớp sau chặn lại:
 
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
+* **AWS WAF** đứng trước API Gateway với bốn rule đánh giá theo thứ tự ưu tiên: rule rate-based theo IP (chặn bất kỳ IP nào vượt 2000 request / 5 phút), Common Rule Set do AWS quản lý (bảo vệ kiểu OWASP), IP Reputation List (bot xấu đã biết), và bộ Known Bad Inputs (Log4j/JNDI, path traversal, host-header injection). Hai sub-rule trong Common Rule Set được cố ý đặt thành *Count* thay vì *Block* vì nếu không sẽ chặn nhầm các lần import JSON lớn hợp lệ và upload file nhị phân.
+* **Throttling ở mức stage** trên API Gateway là lớp phòng thủ thứ hai chống lại flood.
+* **Xác minh JWT của Cognito** canh giữ mọi endpoint yêu cầu đăng nhập.
+* **IAM đặc quyền tối thiểu** — execution role của Lambda chỉ được cấp đúng các action cần thiết: CRUD trên chính S3 bucket của nó, một danh sách ngắn các lệnh admin Cognito giới hạn theo ARN của User Pool cụ thể, và `polly:SynthesizeSpeech`. Không hơn.
 
----
+## Vì sao cách này thắng với một đội nhỏ
 
-## Core microservice
+Giá trị của cách tiếp cận serverless-trên-AWS được đo bằng những vấn đề chúng tôi *không* gặp phải:
 
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
+* **Không lập kế hoạch công suất** — lưu lượng tăng gấp đôi vào tối thi; Lambda và API Gateway tự hấp thụ.
+* **Không tốn chi phí nhàn rỗi** — một tuần yên ắng chỉ tốn phần lẻ, vì compute chỉ tính tiền khi có request đến.
+* **Không chạy theo vòng vá lỗi** — không có OS, không có runtime host, không có load balancer để phải vá.
+* **Deploy một lệnh** — toàn bộ stack nằm trong `template.yaml`; một lệnh deploy ship cả hạ tầng lẫn code cùng nhau, tái lập được.
 
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
-
----
-
-## Front door microservice
-
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
-
----
-
-## Staging ER7 microservice
-
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
-
----
-
-## Tính năng mới trong giải pháp
-
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Với một đội tinh gọn xây dựng sản phẩm AI, điều đó nghĩa là thời gian kỹ thuật đổ vào chất lượng đề thi và độ chính xác khi chấm — những thứ học viên thực sự cảm nhận — thay vì đổ vào việc giữ cho máy chủ sống.
