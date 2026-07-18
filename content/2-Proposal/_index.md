@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2. </b> "
 ---
 
-In this section, you need to summarize the contents of the workshop that you **plan** to conduct.
-
 # LingoRise — Vietnamese-First IELTS & TOEIC Preparation Platform
 ## An AWS Serverless Solution for AI-Assisted Test Preparation and Admin Content Operations
 

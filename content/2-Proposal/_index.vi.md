@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2. </b> "
 ---
 
-Tại phần này, bạn cần tóm tắt các nội dung trong workshop mà bạn **dự tính** sẽ làm.
-
 # LingoRise — Nền tảng luyện thi IELTS & TOEIC ưu tiên tiếng Việt
 ## Giải pháp AWS Serverless cho luyện thi có hỗ trợ AI và vận hành nội dung phía quản trị
 
