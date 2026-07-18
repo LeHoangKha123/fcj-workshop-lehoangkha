@@ -5,7 +5,7 @@ weight: 1
 chapter: false
 ---
 
-# Lê Hoàng Kha
+# LE HOANG KHA
 
 ### Student Information:
 &emsp; **Full Name:** Le Hoang Kha
@@ -24,7 +24,7 @@ chapter: false
 
 &emsp; **Internship Duration:** From 17/04/2026 to 10/07/2026
 
-![Lê Hoàng Kha](/images/avt.png)
+![LE HOANG KHA](/images/avt.png)
 
 ### Report Content
 
