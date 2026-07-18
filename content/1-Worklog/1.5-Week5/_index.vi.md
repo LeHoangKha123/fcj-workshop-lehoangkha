@@ -1,59 +1,31 @@
 ---
 title: "Worklog Tuần 5"
-date: 2024-01-01
-weight: 1
+date: 2026-05-18
+weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 5:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+- Hoàn thiện Presentation Layer cho LingoRise: domain, CDN, và triển khai frontend.
+- Kết nối giao diện người dùng với API, Cognito, và luồng xác thực end-to-end.
+- Xác nhận cách các dịch vụ AWS phối hợp với dữ liệu ngoài AWS để đi gần hơn tới sản phẩm hoàn chỉnh.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | Rà soát domain `lingorise.xyz`, cấu hình Route 53 và kiểm tra luồng phân giải DNS đến AWS edge. | 18/05/2026 | 18/05/2026 | [Tài liệu AWS Route 53](https://docs.aws.amazon.com/route53/) & [Tài liệu AWS CloudFront](https://docs.aws.amazon.com/cloudfront/) |
+| 3 | Kiểm tra CloudFront và Amplify Hosting để đảm bảo frontend Next.js được phân phối ổn định. | 19/05/2026 | 19/05/2026 | [Tài liệu AWS Amplify](https://docs.aws.amazon.com/amplify/) & [Tài liệu AWS CloudFront](https://docs.aws.amazon.com/cloudfront/) |
+| 4 | Tích hợp màn hình đăng nhập/đăng ký với Amazon Cognito và xác thực JWT phía client. | 20/05/2026 | 20/05/2026 | [Tài liệu Amazon Cognito](https://docs.aws.amazon.com/cognito/) |
+| 5 | Nối frontend with API Gateway và Lambda, kiểm tra các request protected theo từng vai trò Learner/Admin. | 21/05/2026 | 21/05/2026 | [Tài liệu API Gateway](https://docs.aws.amazon.com/apigateway/) & [Tài liệu AWS Lambda](https://docs.aws.amazon.com/lambda/) |
+| 6 | Đồng bộ dữ liệu hiển thị từ S3 và RDS PostgreSQL và hoàn thiện luồng request end-to-end của website. | 22/05/2026 | 22/05/2026 | [Sơ đồ Kiến trúc LingoRise](/vi/2-proposal/) |
 
 ### Kết quả đạt được tuần 5:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+- Cấu hình và xác thực hoạt động ổn định của tên miền (domain) cùng lớp phân phối frontend qua Route 53, CloudFront và AWS Amplify.
+- Tích hợp giao diện website với luồng xác thực Cognito và thiết lập kết nối gọi API từ hệ thống backend.
+- Đồng bộ hóa sự phối hợp giữa Frontend, API Gateway, Lambda, S3 và các dịch vụ ngoài AWS để hình thành kiến trúc ứng dụng web LingoRise hoàn chỉnh.
 
 

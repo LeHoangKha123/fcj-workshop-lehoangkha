@@ -1,59 +1,25 @@
 ---
 title: "Worklog Tuần 7"
-date: 2024-01-01
-weight: 1
+date: 2026-06-01
+weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 7:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+- Tích hợp tính năng tạo âm thanh giọng đọc (TTS) cho các bài nghe.
+- Tối ưu hóa hiệu năng kết nối cơ sở dữ liệu và phân quyền hệ thống.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | Rà soát IAM Role của Lambda, tinh chỉnh quyền truy cập S3, Cognito và tích hợp Edge-TTS theo nguyên tắc Least Privilege. | 01/06/2026 | 01/06/2026 | [Tài liệu AWS IAM](https://docs.aws.amazon.com/iam/) |
+| 3 - 5 | Nghiên cứu và xây dựng cầu nối Edge-TTS bằng Python bridge trên môi trường AWS Lambda.<br>Giải quyết các vấn đề về dung lượng gói Lambda, quyền truy cập file nháp trên ổ đĩa read-only và tối ưu hóa thời gian xử lý. | 02/06/2026 | 04/06/2026 | [Thư viện Edge-TTS (GitHub)](https://github.com/rany2/edge-tts) & [Lập trình Python trên AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/lambda-python.html) |
+| 6 | Tối ưu hóa các truy vấn SQL nâng cao trên RDS PostgreSQL và cấu hình pool kết nối tối ưu tránh cạn kiệt tài nguyên Lambda. | 05/06/2026 | 05/06/2026 | [Tài liệu Amazon RDS cho PostgreSQL](https://docs.aws.amazon.com/rds/) |
 
 ### Kết quả đạt được tuần 7:
-
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+- Tích hợp thành công giải pháp chuyển đổi văn bản thành giọng nói tự nhiên (Edge-TTS), tự động hóa quy trình soạn thảo đề thi nghe (Listening) cho Admin.
+- Tối ưu hóa và giải quyết thành công việc thực thi các script Python trung gian trên Lambda, xử lý tốt giới hạn dung lượng phân vùng `/tmp` và kích thước file zip.
+- Cấu hình cơ chế kết nối (connection pool) tối ưu để đảm bảo các truy vấn RDS PostgreSQL hoạt động ổn định, loại bỏ lỗi quá tải kết nối (max connections).

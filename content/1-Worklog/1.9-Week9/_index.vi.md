@@ -1,59 +1,27 @@
 ---
 title: "Worklog Tuần 9"
-date: 2024-01-01
-weight: 1
+date: 2026-06-15
+weight: 9
 chapter: false
 pre: " <b> 1.9. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 9:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+- Hoàn thiện kiểm thử chức năng thi thử (IELTS/TOEIC) và tích hợp hệ thống hàng đợi quét chữ OCR.
+- Kiểm tra các luồng dữ liệu quan trọng và thiết lập cơ chế giám sát.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | Kiểm thử luồng thi thử IELTS/TOEIC và tính năng lưu câu hỏi sai (Mistake Patterns) của học viên. | 15/06/2026 | 15/06/2026 | [Ghi chú Kiểm thử Nội bộ](/vi/1-worklog/) |
+| 3 - 5 | Nghiên cứu Tesseract.js OCR, xây dựng hàng đợi xử lý background queue (quét chữ từ ảnh đề thi) dùng câu lệnh <code>SELECT FOR UPDATE SKIP LOCKED</code> tránh xung đột.<br>Thiết lập scheduled worker và cơ chế dọn dẹp các bản nháp import quá hạn. | 16/06/2026 | 18/06/2026 | [Tài liệu Tesseract.js (GitHub)](https://github.com/naptha/tesseract.js) & [Tài liệu thư viện OCR](https://tesseract.projectnaptha.com/) |
+| 6 | Kiểm tra cơ chế ghi audit logs cho toàn bộ thao tác ghi của Admin và chạy thử nghiệm chịu tải song song. | 19/06/2026 | 19/06/2026 | [Ghi chú Đảm bảo Chất lượng (QA)](/vi/1-worklog/) |
 
 ### Kết quả đạt được tuần 9:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+- Thiết lập thành công hệ thống hàng đợi quét ký tự quang học (OCR) tự động từ hình ảnh câu hỏi, rút ngắn thời gian nhập liệu đề thi.
+- Ứng dụng thành công cơ chế chống xung đột hàng đợi trong PostgreSQL bằng kỹ thuật khóa `SKIP LOCKED` cho môi trường xử lý đa tiến trình.
+- Đồng bộ hóa dữ liệu thi thử và hệ thống nhận diện mẫu lỗi sai (Mistake Patterns), hiển thị chính xác biểu đồ thống kê phân tích lỗi.
+- Triển khai đầy đủ tính năng ghi nhật ký kiểm toán (audit logs) cho mọi hoạt động ghi/cập nhật của quản trị viên.

@@ -1,59 +1,31 @@
 ---
 title: "Worklog Tuần 8"
-date: 2024-01-01
-weight: 1
+date: 2026-06-08
+weight: 8
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 8:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+- Tối ưu giao diện người dùng và chuẩn hóa trải nghiệm trên cả desktop lẫn mobile.
+- Hoàn thiện các màn hình chính để tiến gần hơn đến bản song ngữ ưu tiên tiếng Việt cuối cùng.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | Rà soát layout, typography và spacing của các trang chính trên frontend. | 08/06/2026 | 08/06/2026 | [Tài liệu Next.js](https://nextjs.org/docs) & [Hướng dẫn thiết kế giao diện](/vi/1-worklog/) |
+| 3 | Tối ưu hiển thị trên mobile và tablet cho các phần landing, course, exam và dashboard. | 09/06/2026 | 09/06/2026 | [Ghi chú Thiết kế Responsive](/vi/1-worklog/) |
+| 4 | Chuẩn hóa nội dung song ngữ và kiểm tra các đoạn text liên quan đến học viên, bài thi và lộ trình học. | 10/06/2026 | 10/06/2026 | [Ghi chú Soát lỗi Nội dung](/vi/1-worklog/) |
+| 5 | Cải thiện các thông báo trạng thái, loading, error và feedback cho người dùng. | 11/06/2026 | 11/06/2026 | [Ghi chú Trải nghiệm Người dùng (UX)](/vi/1-worklog/) |
+| 6 | Chạy lại kiểm tra trên các luồng quan trọng để đảm bảo giao diện ổn định trước khi bàn giao. | 12/06/2026 | 12/06/2026 | [Ghi chú Kiểm thử Nội bộ (QA)](/vi/1-worklog/) |
 
 ### Kết quả đạt được tuần 8:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+- Tối ưu hóa giao diện web (Responsive Design) mang lại trải nghiệm mượt mà trên cả desktop và thiết bị di động.
+- Chuẩn hóa cấu trúc và nội dung tại các trang chính, hoàn thiện giao diện song ngữ ưu tiên tiếng Việt.
+- Tinh chỉnh các trạng thái hiển thị (loading, success, error) giúp nâng cao tính chuyên nghiệp và thân thiện với người dùng.
+- Chuẩn bị sẵn sàng tài nguyên cho các giai đoạn kiểm thử chức năng chuyên sâu và xây dựng tài liệu báo cáo tiếp theo.
 
 

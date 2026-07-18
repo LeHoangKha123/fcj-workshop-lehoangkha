@@ -1,126 +1,85 @@
 ---
 title: "Event 2"
-date: 2024-01-01
-weight: 1
+date: 2026-06-13
+weight: 2
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
-
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+# Reflection Report: “AWS First Cloud AI Journey — Career & Culture Sharing at MNCs Seminar”
 
 ### Event Objectives
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+- Aim to bridge the gap between academic theory and the practical corporate environment.
+- Provide career guidance through sharing practical experiences regarding career paths and working culture at multinational corporations (MNCs) and fast-growing startups.
+- Identify the core skill set and career development mindset in the data and cloud industry.
 
-### Speakers
+### List of Speakers
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+- **Mr. Dat Pham** - Data Analytics Engineer
+- **Mr. Cuong Nguyen** - Process Engineer
+- **Trong H. Truong** - DevOps Engineer @ Endava Vietnam
+- **Danh Hoang Hieu Nghi** - AI Engineer, AWS Community Builder, AWS Student Builder Group Leader
+- **Đinh Trung Kiên** - Lead Developer at a startup
+- **Nguyễn Minh Thọ** - Student
 
 ### Key Highlights
 
-#### Identifying the drawbacks of legacy application architecture
+#### Actual Work and Skill Sets in Enterprises
+- The role of a data engineer varies flexibly depending on the domain: from designing performance tracking dashboards at startups like Kamereo to optimizing costs and IoT devices at manufacturing corporations like Colgate-Palmolive[cite: 2].
+- 4 vital skills: Critical thinking, communication skills, Data Storytelling, and data-driven problem solving[cite: 2].
+- The career progression path is divided into 3 milestones: Follower (Executor) -> Learner (Active Learner) -> Problem Solver[cite: 2].
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+#### The Big Picture of DevOps
+- Breaking stereotypical views: DevOps is not just about installing tools or fixing bugs at night, but a core strategy to accelerate software delivery and enhance reliability[cite: 2].
+- The actual scope of work is shaped by project size, team structure, and the level of cloud infrastructure automation[cite: 2].
+- Mapping the 10 stages of the tool ecosystem: from Plan & Code (Git, Jira), Build & Test (Jenkins), Release & Deploy (Terraform), to Operate (Kubernetes, AWS) and Security/Platform Engineering (SonarQube)[cite: 2].
 
-#### Transitioning to modern application architecture – Microservices
+#### AWS Ecosystem Development Roadmap
+- The 8-step growth loop: Starting from Student Curiosity, moving to hands-on labs, building a real-world project portfolio, and finally becoming an AWS Partner to share knowledge back with the community (Share Back)[cite: 2].
+- AWS Student Builder community privileges: Providing a practical environment through AWS Credits and international certification vouchers, helping to reduce cost barriers[cite: 2].
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
+#### URL Shortening System Architecture on AWS
+- **Infrastructure**: Leveraging Route 53, CloudFront, and WAF for routing and security; Amplify for the static frontend; and Fargate (ECS) running a Spring Boot API behind an Application Load Balancer[cite: 2].
+- **Data processing strategy**: Using DynamoDB as the primary storage, combined with Amazon ElastiCache for Redis to optimize read access speed[cite: 2].
+- **Key Generation Service (KGS) Model**: Running a background process to pre-generate unique keys, pushing them into a Redis queue (LPUSH), and extracting them (RPOP) immediately upon request[cite: 2]. This method helps prevent write bottlenecks when the system is under high load[cite: 2].
 
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
+### What I Learned
 
-#### Domain-Driven Design (DDD)
-
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
-
-#### Event-Driven Architecture
-
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
-
-#### Compute Evolution
-
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
-
-#### Amazon Q Developer
-
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
-
-### Key Takeaways
-
-#### Design Mindset
-
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
+#### Design Thinking
+- **Domain-Driven Design**: Technology and source code only truly deliver value when tightly aligned with the specific context and goals of the business[cite: 2].
+- **Problem Solver Mindset**: Clearly recognizing the need to shift from executing tasks based on existing scripts to proactively analyzing business problems, finding root causes, and proposing solutions[cite: 2].
+- **Data Storytelling**: Building technical infrastructure is not enough; the core competency also lies in the ability to turn data into meaningful messages to communicate with stakeholders[cite: 2].
 
 #### Technical Architecture
+- **Write task optimization strategy**: Deeply understanding the pre-computation model (KGS Pattern) to handle scenarios where the system receives a massive number of concurrent requests[cite: 2].
+- **Distributed architecture**: How to combine a durable NoSQL database (DynamoDB) and an in-memory cache (Redis) to achieve maximum performance[cite: 2].
+- **IaC (Infrastructure as Code) Ecosystem**: The importance of packaging infrastructure into code to ensure consistency and automation in the deployment lifecycle (CI/CD)[cite: 2].
 
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
-
-#### Modernization Strategy
-
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
-
-### Applying to Work
-
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+### Application to Work
+- **System Architecture**: Applying the philosophy of decoupling heavy tasks into background tasks (like the KGS model) combined with an in-memory queue to eliminate bottlenecks.
+- **Automated Deployment**: Integrating resource provisioning automation tools (such as AWS SAM or Terraform) into the operational workflow to standardize the product release process.
+- **Database Optimization**: Evaluating and deploying Distributed Caching solutions for processing flows with high read ratios to reduce the load on the primary Database.
+- **Quality Management**: Building a culture of transparent project documentation (portfolio) to track technical progress and serve as a baseline for measuring performance.
 
 ### Event Experience
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
+Attending the "Career & Culture Sharing at MNCs Seminar" provided a professional, practical perspective on the gap between the academic environment and the strict operational standards at multinational enterprises. Some standout experiences:
 
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
+#### Acquiring Enterprise-Grade System Design Thinking
+- Through the URL Shortening system analysis case study, I clearly understood how services like AWS Fargate, DynamoDB, and Redis interact closely to create a fault-tolerant and infinitely scalable architecture[cite: 2].
+- Strongly impressed by the technique of solving the "write bottleneck" problem by pre-generating keys through the KGS Pattern[cite: 2]. This is a clear testament to the technical mindset of staying one step ahead to protect the system from the risk of crashing.
 
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
+#### Positioning Myself on the Technology Map
+- The seminar helped systematize the entire DevOps lifecycle into 10 clear stages[cite: 2], thereby accurately identifying current capabilities and the toolsets needed to meet industry standards.
+- Deeply realized the need to change my working mindset: not just stopping at the position of a "Learner", but striving to advance to the role of a "Problem Solver", taking responsibility for the final output quality[cite: 2].
 
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
+#### Key Takeaways
+- The core of software development does not lie in the number of technologies used, but in how the solution optimizes costs and performance for the business[cite: 2].
+- Accumulating certificates through programs like AWS Student Builder is a solid stepping stone, but the ability to clearly present project architecture (Portfolio) and technical storytelling (Data Storytelling) is the true key to creating a core competitive advantage[cite: 2].
+- Automating the deployment pipeline (CI/CD) is no longer an optional add-on, but a mandatory requirement to maintain fast and safe release speeds in modern environments.
 
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
+#### Event Photos
+![Event Photo](images/1.jpg)
 
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
-
-#### Some event photos
-*Add your event photos here*  
-
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+> Overall, the seminar not only provided a genuine perspective on the career development path and the DevOps ecosystem but also reshaped my professional mindset: shifting strongly from a passive executor (Follower) to the mentality of a proactive engineer (Problem Solver), ready to design high-load architectures that meet the strict standards of enterprises.

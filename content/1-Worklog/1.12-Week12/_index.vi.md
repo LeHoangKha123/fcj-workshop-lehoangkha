@@ -1,58 +1,31 @@
 ---
 title: "Worklog Tuần 12"
-date: 2024-01-01
-weight: 2
+date: 2026-07-06
+weight: 12
 chapter: false
-pre: " <b> 1.12 </b> "
+pre: " <b> 1.12. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
 ### Mục tiêu tuần 12:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+- Hoàn tất sản phẩm cuối cùng và chuẩn bị bàn giao sau thực tập.
+- Tổng hợp toàn bộ quá trình thành một bản báo cáo hoàn chỉnh, rõ ràng và nhất quán.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | Chốt toàn bộ nội dung báo cáo và kiểm tra lại tính nhất quán của các tuần trước. | 06/07/2026 | 06/07/2026 | [Dự thảo Báo cáo Cuối kỳ](/vi/1-worklog/) |
+| 3 | Rà soát lại toàn bộ mã nguồn, nội dung song ngữ và các trang chính của website. | 07/07/2026 | 07/07/2026 | [Ghi chú Rà soát Mã nguồn](/vi/1-worklog/) |
+| 4 | Chạy kiểm tra cuối cùng trên luồng đăng nhập, thi thử, dashboard và các trang nội dung. | 08/07/2026 | 08/07/2026 | [Danh sách Kiểm định Chất lượng (QA)](/vi/1-worklog/) |
+| 5 | Hoàn thiện phần trình bày dự án, ảnh minh họa và phần mô tả kiến trúc cho báo cáo. | 09/07/2026 | 09/07/2026 | [Tài liệu Thuyết trình & Kiến trúc](/vi/2-proposal/) |
+| 6 | Bàn giao sản phẩm nền tảng LingoRise song ngữ ưu tiên tiếng Việt và tổng kết kết quả thực tập. | 10/07/2026 | 10/07/2026 | [Biên bản Bàn giao Sản phẩm](/vi/1-worklog/) |
 
 ### Kết quả đạt được tuần 12:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+- Hoàn thiện và chuẩn hóa toàn bộ báo cáo tổng kết cuối kỳ theo đúng kế hoạch thực tập 12 tuần.
+- Đưa website LingoRise phiên bản song ngữ (ưu tiên tiếng Việt) vào trạng thái ổn định và sẵn sàng bàn giao.
+- Rà soát toàn diện lần cuối về kiến trúc, luồng xử lý dữ liệu và nội dung hiển thị trên trang.
+- Đóng gói toàn bộ sản phẩm thực tập hoàn chỉnh, có tính nhất quán cao và sẵn sàng vận hành độc lập.
 
 

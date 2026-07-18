@@ -6,42 +6,24 @@ chapter: false
 pre: " <b> 7. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
+> The 3-month internship at **AWS Vietnam** under the **First Cloud AI Journey** bootcamp has been an incredibly valuable journey for me. Below is my honest reflection, evaluation, and feedback from my perspective as an intern:
 
-> Here, you can freely share your personal opinions about your experience participating in the First Cloud Journey program. This will help the FCJ team improve any shortcomings based on the following aspects:
+### 1. Evaluation of Working Environment & Culture
+The working environment at AWS is highly dynamic, open, and modern. I was deeply impressed by the culture of Customer Obsession and the strong sense of Ownership demonstrated by everyone in the team. My opinions as an intern were always respected, and there was no hierarchical barrier during team discussions or technical debates. The workplace constantly encourages innovation and hands-on experimentation.
 
-### Overall Evaluation
+### 2. Support from Mentor & Administrative Team
+My mentor was exceptionally dedicated and possessed deep technical expertise. Instead of simply handing over direct solutions, they guided my thinking and encouraged me to research documentation and run experiments to solve problems on my own. The administrative team was also very efficient in handling paperwork, provisioning learning resources, and organizing highly valuable Tech Talks.
 
-**1. Working Environment**  
-The working environment is very friendly and open. FCJ members are always willing to help whenever I encounter difficulties, even outside working hours. The workspace is tidy and comfortable, helping me focus better. However, I think it would be nice to have more social gatherings or team bonding activities to strengthen relationships.
+### 3. Academic Relevance & Practical Application
+Developing the LingoRise platform allowed me to apply the core web development and relational database concepts learned at HUTECH University to a real-world product. Additionally, I gained hands-on experience with modern cloud services such as Serverless (Lambda, API Gateway), Infrastructure as Code (AWS SAM), secure S3/CloudFront storage, and AI integrations - areas that are not covered in depth in university curricula.
 
-**2. Support from Mentor / Team Admin**  
-The mentor provides very detailed guidance, explains clearly when I don’t understand, and always encourages me to ask questions. The admin team supports administrative tasks, provides necessary documents, and creates favorable conditions for me to work effectively. I especially appreciate that the mentor allows me to try and solve problems myself instead of just giving the answer.
-
-**3. Relevance of Work to Academic Major**  
-The tasks I was assigned align well with the knowledge I learned at university, while also introducing me to new areas I had never encountered before. This allowed me to both strengthen my foundational knowledge and gain practical skills.
-
-**4. Learning & Skill Development Opportunities**  
-During the internship, I learned many new skills such as using project management tools, teamwork skills, and professional communication in a corporate environment. The mentor also shared valuable real-world experiences that helped me better plan my career path.
-
-**5. Company Culture & Team Spirit**  
-The company culture is very positive: everyone respects each other, works seriously but still keeps things enjoyable. When there are urgent projects, everyone works together and supports one another regardless of their position. This made me feel like a real part of the team, even as an intern.
-
-**6. Internship Policies / Benefits**  
-The company provides an internship allowance and offers flexible working hours when needed. In addition, having the opportunity to join internal training sessions is a big plus.
+### 4. Growth Opportunities & Team Collaboration
+Throughout this journey, I have not only improved my coding and architectural design skills but also significantly enhanced my teamwork, timeline management (via the Task State board), and technical writing skills. The collaboration within the FCJ group was outstanding; peers were always ready to share resources and help each other overcome technical blockers during the project.
 
 ---
 
-### Additional Questions
-- What did you find **most satisfying** during your internship?  
-- What do you think the company **should improve** for future interns?  
-- If recommending to a friend, would you **suggest they intern here**? Why or why not?  
+### Additional Reflections & Recommendations
 
----
-
-### Suggestions & Expectations
-- Do you have any suggestions to improve the internship experience?  
-- Would you like to continue this program in the future?  
-- Any other comments (free sharing):
+*   **Most Satisfying Aspect**: Being able to build and deploy a complete Serverless application from scratch and receive detailed, professional code reviews and feedback from senior AWS professionals.
+*   **Areas for Improvement**: The program could organize structured 1-on-1 career mentoring sessions with AWS Solutions Architects to help interns gain clearer insights into their career paths post-bootcamp.
+*   **Recommendation to Peers**: I would absolutely recommend this bootcamp to any technology student. It is a rare, hands-on opportunity to work in a professional Cloud & AI ecosystem, learn how to function as a software engineer, and build a solid foundation for your future career.

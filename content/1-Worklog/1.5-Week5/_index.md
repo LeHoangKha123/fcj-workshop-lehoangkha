@@ -1,57 +1,29 @@
 ---
 title: "Week 5 Worklog"
-date: 2024-01-01
-weight: 1
+date: 2026-05-18
+weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 5 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+- Complete the Presentation Layer for LingoRise: domain, CDN, and frontend deployment.
+- Connect the user interface with the API, Cognito, and the end-to-end authentication flow.
+- Validate how AWS services work together with external data services to move closer to the final product.
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Tasks to be implemented this week:
 
+| Day | Task | Start Date | End Date | References |
+| --- | --- | --- | --- | --- |
+| 2 | Review the `lingorise.xyz` domain, configure Route 53, and verify DNS resolution to the AWS edge. | 18/05/2026 | 18/05/2026 | Route 53 / CloudFront Docs |
+| 3 | Check CloudFront and Amplify Hosting to make sure the Next.js frontend is delivered reliably. | 19/05/2026 | 19/05/2026 | AWS Amplify / CloudFront Docs |
+| 4 | Integrate the login and registration screens with Amazon Cognito and handle JWT validation on the client side. | 20/05/2026 | 20/05/2026 | Amazon Cognito Docs |
+| 5 | Connect the frontend with API Gateway and Lambda, and verify protected requests for Learner/Admin roles. | 21/05/2026 | 21/05/2026 | API Gateway / Lambda Docs |
+| 6 | Sync displayed data from S3 and RDS PostgreSQL, and complete the website's end-to-end request flow. | 22/05/2026 | 22/05/2026 | LingoRise Architecture Notes |
 
-### Week 5 Achievements:
+### Achievements in Week 5:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+- The frontend delivery layer has been confirmed stable through Route 53, CloudFront, and Amplify.
+- The web interface can connect to Cognito authentication and call backend APIs successfully.
+- I gained a clearer understanding of how the frontend, API, Lambda, S3, and external services work together to form the final LingoRise web product.

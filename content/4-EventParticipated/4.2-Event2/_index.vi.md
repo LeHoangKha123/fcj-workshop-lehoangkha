@@ -1,125 +1,85 @@
 ---
 title: "Event 2"
-date: 2024-01-01
-weight: 1
+date: 2026-06-13
+weight: 2
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+# Bài thu hoạch “AWS First Cloud AI Journey — Hội thảo chia sẻ nghề nghiệp & văn hóa tại MNCs”
 
 ### Mục Đích Của Sự Kiện
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+- Hướng tới việc thu hẹp khoảng cách giữa lý thuyết học tập và môi trường doanh nghiệp thực tế.
+- Cung cấp định hướng nghề nghiệp thông qua chia sẻ trải nghiệm thực chiến về lộ trình, văn hóa làm việc tại các công ty đa quốc gia (MNCs) và startup tăng trưởng nhanh.
+- Xác định bộ kỹ năng cốt lõi và tư duy phát triển sự nghiệp trong ngành dữ liệu và đám mây.
 
 ### Danh Sách Diễn Giả
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+- **Mr. Dat Pham** - Data Analytics Engineer
+- **Mr. Cuong Nguyen** - Process Engineer
+- **Trong H. Truong** - DevOps Engineer @ Endava Vietnam
+- **Danh Hoang Hieu Nghi** - AI Engineer, AWS Community Builder, AWS Student Builder Group Leader
+- **Đinh Trung Kiên** - Lead Developer at a startup
+- **Nguyễn Minh Thọ** - Student
 
 ### Nội Dung Nổi Bật
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+#### Thực tế công việc và bộ kỹ năng tại doanh nghiệp
+- Vai trò của kỹ sư dữ liệu thay đổi linh hoạt theo ngành nghề (domain): từ thiết kế dashboard báo cáo hiệu suất tại các startup như Kamereo đến tối ưu hóa chi phí và thiết bị IoT tại tập đoàn sản xuất như Colgate-Palmolive[cite: 2].
+- 4 kỹ năng sống còn: Tư duy phản biện, kỹ năng giao tiếp, khả năng kể chuyện với dữ liệu (Data Storytelling), và giải quyết vấn đề dựa trên dữ liệu[cite: 2].
+- Lộ trình thăng tiến được chia thành 3 mốc: Follower (Người thực thi) $\rightarrow$ Learner (Người học chủ động) $\rightarrow$ Problem Solver (Người giải quyết vấn đề)[cite: 2].
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+#### Bức tranh toàn cảnh về DevOps
+- Phá vỡ góc nhìn lối mòn: DevOps không chỉ dừng ở cài đặt công cụ hay sửa lỗi ban đêm, mà là chiến lược cốt lõi để tăng tốc phân phối phần mềm và độ tin cậy[cite: 2].
+- Phạm vi công việc thực tế được định hình bởi quy mô dự án, cấu trúc nhóm và mức độ tự động hóa hạ tầng đám mây[cite: 2].
+- Bản đồ hóa 10 giai đoạn hệ sinh thái công cụ: từ Plan & Code (Git, Jira), Build & Test (Jenkins), Release & Deploy (Terraform), đến Operate (Kubernetes, AWS) và Security/Platform Engineering (SonarQube)[cite: 2].
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+#### Lộ trình phát triển hệ sinh thái AWS
+- Vòng lặp 8 bước trưởng thành: Bắt đầu từ sự tò mò (Student Curiosity) đến tham gia lab thực hành, xây dựng portfolio dự án thực tế, và cuối cùng là trở thành AWS Partner để chia sẻ lại kiến thức cho cộng đồng (Share Back)[cite: 2].
+- Đặc quyền cộng đồng AWS Student Builder: Cung cấp môi trường thực chiến thông qua các tín chỉ AWS Credits và voucher thi chứng chỉ quốc tế, giúp giảm rào cản chi phí[cite: 2].
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
-
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
-
-#### Domain-Driven Design (DDD)
-
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
-
-#### Event-Driven Architecture
-
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
-
-#### Compute Evolution
-
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
-
-#### Amazon Q Developer
-
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+#### Kiến trúc hệ thống URL Shortening trên AWS
+- **Cơ sở hạ tầng**: Tận dụng Route 53, CloudFront và WAF để điều hướng và bảo mật; Amplify cho frontend tĩnh; và Fargate (ECS) chạy Spring Boot API phía sau Application Load Balancer[cite: 2].
+- **Chiến lược xử lý dữ liệu**: Sử dụng DynamoDB làm kho lưu trữ chính, kết hợp Amazon ElastiCache cho Redis để tối ưu hóa tốc độ đọc truy xuất[cite: 2].
+- **Mô hình Key Generation Service (KGS)**: Chạy tiến trình ngầm để sinh trước mã khóa độc bản, đẩy vào hàng đợi Redis (LPUSH) và trích xuất (RPOP) ngay khi có yêu cầu[cite: 2]. Phương pháp này giúp tránh nghẽn ghi (write bottleneck) khi hệ thống chịu tải cao[cite: 2].
 
 ### Những Gì Học Được
 
 #### Tư Duy Thiết Kế
-
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+- **Thiết kế hướng Domain**: Công nghệ và mã nguồn chỉ thực sự phát huy giá trị khi được gắn chặt với bối cảnh và mục tiêu cụ thể của doanh nghiệp[cite: 2].
+- **Tư duy Problem Solver**: Nhận thức rõ sự cần thiết phải chuyển dịch từ việc thực thi nhiệm vụ theo kịch bản có sẵn sang việc chủ động phân tích bài toán kinh doanh, tìm nguyên nhân gốc rễ và đề xuất giải pháp[cite: 2].
+- **Data Storytelling**: Việc xây dựng hạ tầng kỹ thuật là chưa đủ; năng lực cốt lõi còn nằm ở khả năng biến dữ liệu thành thông điệp có ý nghĩa để giao tiếp với các bên liên quan[cite: 2].
 
 #### Kiến Trúc Kỹ Thuật
-
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
-
-#### Chiến Lược Hiện Đại Hóa
-
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
+- **Chiến lược tối ưu hóa tác vụ ghi**: Hiểu sâu sắc mô hình tính toán trước (KGS Pattern) để xử lý tình huống hệ thống chịu lượng request khổng lồ đồng thời[cite: 2].
+- **Kiến trúc phân tán**: Cách thức kết hợp giữa một cơ sở dữ liệu NoSQL (DynamoDB) bền vững và một in-memory cache (Redis) để đạt hiệu suất cao nhất[cite: 2].
+- **Hệ sinh thái IaC (Infrastructure as Code)**: Tầm quan trọng của việc đóng gói hạ tầng thành mã để đảm bảo tính nhất quán và tự động hóa trong vòng đời triển khai (CI/CD)[cite: 2].
 
 ### Ứng Dụng Vào Công Việc
-
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
+- **Kiến trúc hệ thống**: Áp dụng triết lý phân tách các tác vụ nặng thành các background task (như mô hình KGS) kết hợp in-memory queue để loại bỏ điểm nghẽn cổ chai.
+- **Triển khai tự động**: Đưa các công cụ tự động hóa cấp phát tài nguyên (như AWS SAM hoặc Terraform) vào luồng vận hành để chuẩn hóa quy trình phát hành sản phẩm.
+- **Tối ưu hóa cơ sở dữ liệu**: Đánh giá và triển khai các giải pháp Distributed Caching cho các luồng xử lý có tỷ lệ đọc cao nhằm giảm tải cho Database chính.
+- **Quản trị chất lượng**: Xây dựng văn hóa ghi chép tài liệu dự án minh bạch (portfolio) để theo dõi tiến độ kỹ thuật và làm cơ sở đo lường hiệu suất.
 
 ### Trải nghiệm trong event
 
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
+Tham gia "Hội thảo chia sẻ nghề nghiệp & văn hóa tại MNCs" mang lại góc nhìn chuyên nghiệp, thực tế về khoảng cách giữa môi trường học thuật và các tiêu chuẩn vận hành khắt khe tại doanh nghiệp đa quốc gia. Một số trải nghiệm nổi bật:
 
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
+#### Lĩnh hội tư duy thiết kế hệ thống cấp doanh nghiệp
+- Qua case study phân tích hệ thống URL Shortening, hiểu rõ cách các dịch vụ như AWS Fargate, DynamoDB, và Redis tương tác chặt chẽ để tạo nên một kiến trúc chịu lỗi và khả năng mở rộng không giới hạn[cite: 2].
+- Ấn tượng mạnh mẽ với kỹ thuật giải quyết bài toán "write bottleneck" bằng cách sinh mã khóa trước thông qua KGS Pattern[cite: 2]. Đây là minh chứng rõ nét cho tư duy kỹ thuật đi trước một bước nhằm bảo vệ hệ thống khỏi rủi ro sập nguồn.
 
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
-
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
-
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
+#### Định vị bản thân trên bản đồ công nghệ
+- Hội thảo giúp hệ thống hóa lại toàn bộ chu trình DevOps thành 10 giai đoạn rõ ràng[cite: 2], từ đó xác định chính xác năng lực hiện tại và các mảng công cụ cần bổ sung để đáp ứng tiêu chuẩn ngành.
+- Nhận thức sâu sắc về việc thay đổi tư duy làm việc: không chỉ dừng lại ở vị trí "Người học" (Learner) mà phải nỗ lực tiến tới vai trò "Người giải quyết vấn đề" (Problem Solver), chịu trách nhiệm về chất lượng đầu ra cuối cùng[cite: 2].
 
 #### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
+- Cốt lõi của việc phát triển phần mềm không nằm ở số lượng công nghệ được sử dụng, mà nằm ở việc giải pháp đó tối ưu hóa chi phí và hiệu suất cho doanh nghiệp ra sao[cite: 2].
+- Việc tích lũy chứng chỉ thông qua các chương trình như AWS Student Builder là bàn đạp vững chắc, nhưng khả năng trình bày kiến trúc dự án rõ ràng (Portfolio) và kể chuyện kỹ thuật (Data Storytelling) mới là chìa khóa tạo lợi thế cạnh tranh cốt lõi[cite: 2].
+- Việc tự động hóa luồng triển khai (CI/CD) không còn là lựa chọn thêm vào, mà là yêu cầu bắt buộc để duy trì tốc độ phát hành nhanh chóng và an toàn trong môi trường hiện đại.
 
 #### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+![Ảnh chụp tại sự kiện ](images/1.jpg)
+
+> Tổng thể, hội thảo không chỉ mang lại góc nhìn chân thực về lộ trình phát triển và hệ sinh thái DevOps, mà còn định hình lại tư duy nghề nghiệp của tôi: chuyển dịch mạnh mẽ từ một người thực thi thụ động (Follower) sang tâm thế của một kỹ sư chủ động giải quyết vấn đề (Problem Solver), sẵn sàng thiết kế những kiến trúc chịu tải cao đáp ứng tiêu chuẩn khắt khe của doanh nghiệp.
