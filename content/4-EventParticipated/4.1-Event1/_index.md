@@ -98,14 +98,14 @@ Attending the **AWS First Cloud AI Journey — Community Day** was an extremely 
 - Building defense mechanisms (from validating model outputs to setting infrastructure spending limits) is a vital prerequisite before putting any AI feature into operation.
 
 #### Event Photos
-![Event Photo](images/5.jpg)
+![Event Photo](/images/Event1/5.jpg)
 
-![Event Photo](images/1.jpg)
+![Event Photo](/images/Event1/1.jpg)
 
-![Event Photo](images/2.jpg)
+![Event Photo](/images/Event1/2.jpg)
 
-![Event Photo](images/3.jpg)
+![Event Photo](/images/Event1/3.jpg)
 
-![Event Photo](images/4.jpg)
+![Event Photo](/images/Event1/4.jpg)
 
 > Overall, the event not only provided advanced architectural patterns but also reshaped my programming methodology: always be cautious, prioritize simplicity, and translate all potential risks into clear verification tests before writing code.

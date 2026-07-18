@@ -98,14 +98,14 @@ Tham gia sự kiện **AWS First Cloud AI Journey — Community Day** là một 
 - Việc xây dựng cơ chế phòng thủ (từ validate đầu ra của model đến thiết lập giới hạn chi tiêu hạ tầng) là yếu tố sống còn trước khi đưa bất kỳ tính năng AI nào vào vận hành.
 
 #### Một số hình ảnh khi tham gia sự kiện
-![Ảnh chụp tại sự kiện ](images/5.jpg)
+![Ảnh chụp tại sự kiện ](/images/Event1/5.jpg)
 
-![Ảnh chụp tại sự kiện ](images/1.jpg)
+![Ảnh chụp tại sự kiện ](/images/Event1/1.jpg)
 
-![Ảnh chụp tại sự kiện ](images/2.jpg)
+![Ảnh chụp tại sự kiện ](/images/Event1/2.jpg)
 
-![Ảnh chụp tại sự kiện ](images/3.jpg)
+![Ảnh chụp tại sự kiện ](/images/Event1/3.jpg)
 
-![Ảnh chụp tại sự kiện ](images/4.jpg)
+![Ảnh chụp tại sự kiện ](/images/Event1/4.jpg)
 
 > Tổng thể, sự kiện không chỉ cung cấp các mẫu kiến trúc tiên tiến mà còn định hình lại phương pháp luận lập trình của tôi: luôn thận trọng, đặt tính đơn giản lên hàng đầu, và chuyển hóa mọi rủi ro tiềm ẩn thành các bài test kiểm chứng rõ ràng trước khi viết code.

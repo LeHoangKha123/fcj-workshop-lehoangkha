@@ -68,10 +68,10 @@ Working with 5 other team members was a fantastic communication experience. Argu
 - In system architecture as well as in programming, every decision to change or integrate technology must be clearly verifiable. Do not arbitrarily apply complex architectural patterns if a minimal solution can fully solve the problem.
 
 #### Event Photos
-![Event Photo](images/1.JPG)
+![Event Photo](/images/Event3/1.JPG)
 
-![Event Photo](images/2.JPG)
+![Event Photo](/images/Event3/2.JPG)
 
-![Event Photo](images/3.JPG)
+![Event Photo](/images/Event3/3.JPG)
 
 > Overall, the event was not just an entertaining game but a sharp practical test. It reinforced my belief in goal-oriented working principles, prioritizing accuracy and cautious analytical thinking when dealing with any cloud system.

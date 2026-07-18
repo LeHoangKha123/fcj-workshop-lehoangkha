@@ -18,7 +18,7 @@ This chapter is the map. It shows every AWS service in scope, how the pieces tal
 
 LingoRise runs as a serverless topology. User traffic hits two surfaces: the **frontend** (Amplify Hosting, serving the Next.js app) and the **API** (API Gateway, fronting every backend handler). Lambda is the only compute tier — there are no long-running servers to patch. Lambda talks to RDS for relational data, S3 for assets, SSM for secrets, and reaches out to external partners for AI generation and payments. CloudWatch collects logs from every function.
 
-![LingoRise high-level architecture](./images/architecture.png)
+![LingoRise high-level architecture](/images/Workshop-LingoRise/1-introduction/architecture.png)
 
 The full service inventory below lists every AWS service in scope and what it does in LingoRise.
 
@@ -50,7 +50,7 @@ For the `dev` stage you can deploy Lambda **outside** a VPC and use a publicly r
 
 Three flows show how the pieces cooperate. Read them as step lists; the same flows are drawn as sequence diagrams in the source architecture doc.
 
-![Auth login flow](./images/auth-flow.png)
+![Auth login flow](/images/Workshop-LingoRise/1-introduction/auth-flow.png)
 
 **1. Login and authenticated requests (Cognito)**
 

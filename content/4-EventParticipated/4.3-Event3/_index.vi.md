@@ -68,10 +68,10 @@ Làm việc cùng 5 thành viên khác trong nhóm là một trải nghiệm gia
 - Trong kiến trúc hệ thống cũng như trong lập trình, mọi quyết định thay đổi hoặc tích hợp công nghệ đều phải có khả năng kiểm chứng rõ ràng. Không tự ý áp dụng các mẫu kiến trúc phức tạp nếu một giải pháp tối thiểu đã có thể giải quyết trọn vẹn bài toán.
 
 #### Một số hình ảnh khi tham gia sự kiện
-![Ảnh chụp tại sự kiện 1](images/1.JPG)
+![Ảnh chụp tại sự kiện 1](/images/Event3/1.JPG)
 
-![Ảnh chụp tại sự kiện 2](images/2.JPG)
+![Ảnh chụp tại sự kiện 2](/images/Event3/2.JPG)
 
-![Ảnh chụp tại sự kiện 3](images/3.JPG)
+![Ảnh chụp tại sự kiện 3](/images/Event3/3.JPG)
 
 > Tổng thể, sự kiện không chỉ là một sân chơi giải trí mà còn là một bài kiểm tra thực tế sắc bén. Nó củng cố niềm tin của tôi vào nguyên tắc làm việc hướng mục tiêu, đặt tính chính xác và tư duy phân tích thận trọng lên hàng đầu khi đối mặt với bất kỳ hệ thống đám mây nào.
