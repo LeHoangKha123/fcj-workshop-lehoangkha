@@ -10,11 +10,8 @@ pre: " <b> 8. </b> "
 
 Dưới đây là video quay màn hình chạy thử (demo) các tính năng cốt lõi của nền tảng LingoRise, bao gồm giao diện luyện thi IELTS/TOEIC, luồng chấm điểm tự động hỗ trợ bởi AI, quy trình import/OCR đề thi phía quản trị và tích hợp thanh toán.
 
-<div style="margin: 20px 0; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-  <video width="100%" controls style="display: block;">
-    <source src="/videos/demo.mp4" type="video/mp4">
-    Trình duyệt của bạn không hỗ trợ phát video HTML5. Bạn có thể tải video về để xem.
-  </video>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin: 20px 0;">
+  <iframe src="https://drive.google.com/file/d/1nKN8RtSfymX3zNmQB8A16BZwrVRTi-sx/preview" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
 </div>
 
-> **Lưu ý:** Nếu video không tự động tải hoặc hiển thị, vui lòng kiểm tra xem tệp video `demo.mp4` đã được đặt đúng vào thư mục `static/videos/` của dự án hay chưa.
+> ⚠️ **Lưu ý:** Vui lòng đảm bảo tệp tin **`Demo - LingoRise.mkv`** trên Google Drive đã được cài đặt quyền chia sẻ ở chế độ **"Bất kỳ ai có đường liên kết đều có thể xem" (Anyone with the link can view)** để tất cả mọi người có thể xem trực tuyến được video này.
