@@ -34,3 +34,13 @@ pre: " <b> 4. </b> "
 &emsp;**Location:** 26th Floor, Bitexco Tower, No. 02 Hai Trieu Street, Sai Gon Ward, Ho Chi Minh City
 
 &emsp;**Role:** Contestant (Finalist team member)
+
+
+### [Event 4](4.4-Event4/)
+&emsp;**Event Name:** Event 7: Cloud Architect - The Grand Finale & Championship
+
+&emsp;**Time:** 09:00, 25/06/2026
+
+&emsp;**Location:** 26th Floor, Bitexco Tower, No. 02 Hai Trieu Street, Sai Gon Ward, Ho Chi Minh City
+
+&emsp;**Role:** Contestant - Tournament Champion (Championship)
