@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 4.3. </b> "
 ---
 
-# Bài thu hoạch “Event 7: Cloud Architect - Game Show”
+# Bài thu hoạch “Event: Cloud Architect - Game Show”
 
 ### Mục Đích Của Sự Kiện
 

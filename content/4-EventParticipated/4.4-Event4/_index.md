@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 4.4. </b> "
 ---
 
-# Reflection Report: “Event 7: Cloud Architect - The Grand Finale & Championship”
+# Reflection Report: “Event: Cloud Architect - The Grand Finale & Championship”
 
 ### Event Objectives
 

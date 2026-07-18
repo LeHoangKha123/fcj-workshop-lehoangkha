@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 4.3. </b> "
 ---
 
-# Reflection Report: “Event 7: Cloud Architect - Game Show”
+# Reflection Report: “Event: Cloud Architect - Game Show”
 
 ### Event Objectives
 

@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 4.4. </b> "
 ---
 
-# Bài thu hoạch “Event 7: Cloud Architect - Trận Chung Kết & Chức Vô Địch”
+# Bài thu hoạch “Event: Cloud Architect - Trận Chung Kết & Chức Vô Địch”
 
 ### Mục Đích Của Sự Kiện
 
