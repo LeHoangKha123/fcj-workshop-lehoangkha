@@ -1,5 +1,5 @@
 ---
-title: "LingoRise on AWS"
+title: "Blogs Posted"
 date: 2024-01-01
 weight: 4
 chapter: false
